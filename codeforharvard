@@ -1,0 +1,31 @@
+#include <LiquidCrystal.h>
+// Initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 2, 3, 4, 5);
+
+const int buttonPin = 7; // the pin that the pushbutton is attached to
+int buttonState = 0; // variable for reading the pushbutton status
+
+void setup() {
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+
+  // initialize the pushbutton pin as an input:
+  pinMode(buttonPin, INPUT);
+}
+
+void loop() {
+  // read the state of the pushbutton value:
+  buttonState = digitalRead(buttonPin);
+  
+  // check if the pushbutton is pressed.
+  if (buttonState == HIGH) {
+    // if yes, display the encrypted message
+    lcd.print("Encrypted Msg");
+  } else {
+    // if not, display the original message
+    lcd.print("Hello, Agent");
+  }
+
+  delay(1000);
+  lcd.clear();
+}
